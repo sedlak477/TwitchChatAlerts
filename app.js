@@ -10,10 +10,6 @@ if (config.channels.length > 1 && config.flags.singleChannelMode) {
 }
 
 let client = tmi.client({
-    identity: {
-        username: config.auth.username,
-        password: config.auth.oauth
-    },
     connection: {
         reconnect: true,
         secure: true

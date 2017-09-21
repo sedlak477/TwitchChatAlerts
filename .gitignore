@@ -63,3 +63,4 @@ typings/
 node.exe
 config.json
 start.bat
+start.ps1
