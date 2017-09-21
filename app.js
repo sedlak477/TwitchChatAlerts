@@ -60,6 +60,6 @@ if (config.flags.debug) {
     client.on('reconnect', () => console.log("Reconnecting..."));
 }
 
-console.log(`Twitch Chat Alerts v${package.version} by ${package.author}`.rainbow);
+console.log(`Twitch Chat Alerts v${package.version} by ${package.author}`.underline);
 
 client.connect();
