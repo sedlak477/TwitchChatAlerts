@@ -5,7 +5,7 @@ A very simple application to get notified of basic Twitch chat events.
 ## Features
 
 * Monitor multiple Twitch chats at the same time
-* Read chat messages
+* Read chat messages from any number of channels
 * Receive notifications on:
   * somebody hosting a channel
   * somebody cheering on a channel
