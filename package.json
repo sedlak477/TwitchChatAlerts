@@ -1,0 +1,21 @@
+{
+  "name": "twitchchatalerts",
+  "version": "1.0.0",
+  "description": "A very simple application to get notified of basic Twitch chat events.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "twitch",
+    "chat",
+    "alerts",
+    "colors"
+  ],
+  "author": "sedlak477",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "tmi.js": "^1.2.1"
+  }
+}
