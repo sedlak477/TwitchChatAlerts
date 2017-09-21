@@ -31,15 +31,27 @@ client.on('part', (channel, username, self) => {
 		console.log(`> ${username.red} left` + (!config.flags.singleChannelMode ? ` channel ${channel.yellow}` : ""));
 });
 
-client.on('chat', (channel, userstate, message, self) => {
-	if (config.flags.showChatMessages && (config.flags.showSelf || !self))
-        console.log(`> ${userstate['display-name'].grey}` + (!config.flags.singleChannelMode ? `@${channel.yellow}` : "") + `: ${message}`);
-});
+if (config.flags.showChatMessages)
+    client.on('chat', (channel, userstate, message, self) => {
+        if (config.flags.showSelf || !self)
+            console.log(`> ${userstate['display-name'].grey}` + (!config.flags.singleChannelMode ? `@${channel.yellow}` : "") + `: ${message}`);
+    });
 
-client.on('clearchat', () => {
-    if (config.flags.singleChannelMode && config.flags.clearConsole)
-        process.stdout.write('\x1Bc');
-});
+if (config.flags.singleChannelMode && config.flags.clearConsole)
+    client.on('clearchat', () => process.stdout.write('\x1Bc'));
+
+if (config.flags.showHost)
+    client.on('hosted', (channel, username, viewerCount, autohost) => console.log(`> ${username.cyan} started hosting ` + (!config.flags.singleChannelMode ? channel.yellow : "your channel") + ` with ${viewerCount} Viewers!` + (autohost ? " (autohost)" : "")));
+
+if (config.flags.showCheer)
+    client.on('cheer', (channel, userstate, message) => console.log(`> ${userstate['display-name'].cyan} cheered` + (!config.flags.singleChannelMode ? ` on ${channel.yellow}` : "") + `! Message: ${message}`));
+
+if (config.flags.showSubscribtion)
+    client.on('subscription', (channel, username, method, message, userstate) => console.log(`> ${username.cyan} subscribed` + (!config.flags.singleChannelMode ? ` on ${channel.yellow}` : "") + `! Message: ${message}`));
+
+if (config.flags.showResubscribtion)
+    client.on('resub', (channel, username, months, message, userstate, methods) => console.log(`> ${username.cyan} re-subscribed for ${months} months` + (!config.flags.singleChannelMode ? ` on ${channel.yellow}` : "") + `! Message: ${message}`));
+
 
 if (config.flags.debug) {
     client.on('connecting', (address, port) => console.log(`Connecting to ${address}:${port}...`));
