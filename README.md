@@ -21,6 +21,30 @@ Just add a `config.json` file in the root directory and set the following settin
   * `debug` - Enable additional debug log
   * `singleChannelMode` - Only join one channel and don't output channel name on actions
 
+### Template
+```json
+{
+    "auth": {
+        "username": "YOUR_USERNAME",
+        "oauth": "YOUR_OAUTH"
+    },
+    "channels": [
+        "#YOUR_USERNAME"
+    ],
+    "flags": {
+        "showChatMessages": true,
+        "showSelf": true,
+        "showHost": true,
+        "showCheer": true,
+        "showSubscription": true,
+        "showResubscription": true,
+        "clearConsole": false,
+        "debug": false,
+        "singleChannelMode": true
+    }
+}
+```
+
 To disable colors pass `--no-color` as a command line argument.
 
 ## License
