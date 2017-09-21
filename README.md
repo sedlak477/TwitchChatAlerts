@@ -15,11 +15,13 @@ Just add a `config.json` file in the root directory and set the following settin
   * `showSelf` - Also show your own actions (chat messages, join, leave, etc.)
   * `showHost` - Display a message if somebody started  hosting a channel
   * `showCheer` - Display a message if somebody cheered on a channel
-  * `showCheer` - Also output the included cheer message
+  * `includeCheerMessage` - Also output the included cheer message
   * `showSubscription` - Display a message if somebody subscribed to a channel
-  * `showCheer` - Also output the included subscription message
+  * `includeSubscriptionMessage` - Also output the included subscription message
   * `showResubscription` - Display a message if somebody resubscribed to a channel
-  * `showCheer` - Also output the included resubscription message
+  * `includeResubscriptionMessage` - Also output the included resubscription message
+  * `showJoin` - Display a message if somebody joins a channel (has a 30-60 seconds delay because of Twitch API limitations)
+  * `showPart` - Display a message if somebody parts (leaves) from a channel (has a 30-60 seconds delay because of Twitch API limitations)
   * `clearConsole` - Also clear the console if the Twitch chat got cleared. (only in single channel mode)
   * `debug` - Enable additional debug log
   * `singleChannelMode` - Only join one channel and don't output channel name on actions
@@ -44,6 +46,8 @@ Just add a `config.json` file in the root directory and set the following settin
         "includeSubscriptionMessage": true,
         "showResubscription": true,
         "includeResubscriptionMessage": true,
+        "showJoin": true,
+        "showPart": true,
         "clearConsole": false,
         "debug": false,
         "singleChannelMode": true

@@ -21,15 +21,17 @@ let client = tmi.client({
     channels: config.channels
 });
 
-client.on('join', (channel, username, self) => {
-	if (config.flags.showSelf || !self)
-		console.log(`> ${username.green} joined` + (!config.flags.singleChannelMode ? ` channel ${channel.yellow}` : ""));
-});
+if (config.flags.showJoin)
+    client.on('join', (channel, username, self) => {
+        if (config.flags.showSelf || !self)
+            console.log(`> ${username.green} joined` + (!config.flags.singleChannelMode ? ` channel ${channel.yellow}` : ""));
+    });
 
-client.on('part', (channel, username, self) => {
-	if (config.flags.showSelf || !self)
-		console.log(`> ${username.red} left` + (!config.flags.singleChannelMode ? ` channel ${channel.yellow}` : ""));
-});
+if (config.flags.showPart)
+    client.on('part', (channel, username, self) => {
+        if (config.flags.showSelf || !self)
+            console.log(`> ${username.red} left` + (!config.flags.singleChannelMode ? ` channel ${channel.yellow}` : ""));
+    });
 
 if (config.flags.showChatMessages)
     client.on('chat', (channel, userstate, message, self) => {
