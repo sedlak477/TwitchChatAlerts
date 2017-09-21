@@ -22,7 +22,7 @@ Just add a `config.json` file in the root directory and set the following settin
   * `singleChannelMode` - Only join one channel and don't output channel name on actions
 
 ### Template
-```json
+```javascript
 {
     "auth": {
         "username": "YOUR_USERNAME",
