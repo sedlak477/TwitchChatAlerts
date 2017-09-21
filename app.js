@@ -28,7 +28,7 @@ let client = tmi.client({
 if (config.flags.showJoin)
     client.on('join', (channel, username, self) => {
         if (config.flags.showSelf || !self)
-            console.log("> " + (`${username} joined` + (!config.flags.singleChannelMode ? ` channel ${channel.channel}` : "")).join);
+            console.log("> " + (`${username} joined` + (!config.flags.singleChannelMode ? ` channel ${channel.channel}` : "") + (self ? " (you)" : "")).join);
     });
 
 if (config.flags.showPart)
