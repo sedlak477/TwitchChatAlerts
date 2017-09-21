@@ -44,13 +44,13 @@ if (config.flags.showHost)
     client.on('hosted', (channel, username, viewerCount, autohost) => console.log(`> ${username.cyan} started hosting ` + (!config.flags.singleChannelMode ? channel.yellow : "your channel") + ` with ${viewerCount} Viewers!` + (autohost ? " (autohost)" : "")));
 
 if (config.flags.showCheer)
-    client.on('cheer', (channel, userstate, message) => console.log(`> ${userstate['display-name'].cyan} cheered` + (!config.flags.singleChannelMode ? ` on ${channel.yellow}` : "") + `! Message: ${message}`));
+    client.on('cheer', (channel, userstate, message) => console.log(`> ${userstate['display-name'].cyan} cheered` + (!config.flags.singleChannelMode ? ` on ${channel.yellow}` : "") + "!" + (config.flags.includeCheerMessage ? ` Message: ${message}` : "")));
 
 if (config.flags.showSubscribtion)
-    client.on('subscription', (channel, username, method, message, userstate) => console.log(`> ${username.cyan} subscribed` + (!config.flags.singleChannelMode ? ` on ${channel.yellow}` : "") + `! Message: ${message}`));
+    client.on('subscription', (channel, username, method, message, userstate) => console.log(`> ${username.cyan} subscribed` + (!config.flags.singleChannelMode ? ` on ${channel.yellow}` : "") + "!" + (config.flags.includeSubscriptionMessage ? ` Message: ${message}` : "")));
 
 if (config.flags.showResubscribtion)
-    client.on('resub', (channel, username, months, message, userstate, methods) => console.log(`> ${username.cyan} re-subscribed for ${months} months` + (!config.flags.singleChannelMode ? ` on ${channel.yellow}` : "") + `! Message: ${message}`));
+    client.on('resub', (channel, username, months, message, userstate, methods) => console.log(`> ${username.cyan} re-subscribed for ${months} months` + (!config.flags.singleChannelMode ? ` on ${channel.yellow}` : "") + "!" + (config.flags.includeResubscriptionMessage ? ` Message: ${message}` : "")));
 
 
 if (config.flags.debug) {
