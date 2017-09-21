@@ -2,6 +2,17 @@
 
 A very simple application to get notified of basic Twitch chat events.
 
+## Features
+
+* Monitor multiple Twitch chats at the same time
+* Read chat messages
+* Receive notifications on:
+  * somebody hosting a channel
+  * somebody cheering on a channel
+  * somebody (re)subscribing to a channel
+  * somebody joining or leaving a channel
+* Single channel mode for only montioring one channel with cleaner output
+
 ## Config
 
 Just add a `config.json` file in the root directory and set the following settings:
