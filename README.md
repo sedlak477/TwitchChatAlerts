@@ -19,7 +19,7 @@ Just add a `config.json` file in the root directory and set the following settin
   * `showResubscription` - Display a message if somebody resubscribed to a channel
   * `clearConsole` - Also clear the console if the Twitch chat got cleared. (only in single channel mode)
   * `debug` - Enable additional debug log
-  * `singleChannelMode` - Only join one channel but don't output channel name on actions
+  * `singleChannelMode` - Only join one channel and don't output channel name on actions
 
 To disable colors pass `--no-color` as a command line argument.
 
