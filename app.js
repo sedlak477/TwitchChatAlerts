@@ -1,5 +1,6 @@
 const tmi = require('tmi.js');
 const colors = require('colors');
+const dateformat = require('node-dateformat');
 
 const config = require("./config.json");
 const package = require("./package.json");
@@ -28,35 +29,35 @@ let client = tmi.client({
 if (config.flags.showJoin)
     client.on('join', (channel, username, self) => {
         if (config.flags.showSelf || !self)
-            console.log("> " + (`${username} joined` + (!config.flags.singleChannelMode ? ` channel ${channel.channel}` : "") + (self ? " (you)" : "")).join);
+            console.log((config.flags.showTimestamp ? dateformat.now().format(config.timestampFormat) : "") + "> " + (`${username} joined` + (!config.flags.singleChannelMode ? ` channel ${channel.channel}` : "") + (self ? " (you)" : "")).join);
     });
 
 if (config.flags.showPart)
     client.on('part', (channel, username, self) => {
         if (config.flags.showSelf || !self)
-            console.log("> " + (`${username} left` + (!config.flags.singleChannelMode ? ` channel ${channel.channel}` : "")).part);
+            console.log((config.flags.showTimestamp ? dateformat.now().format(config.timestampFormat) : "") + "> " + (`${username} left` + (!config.flags.singleChannelMode ? ` channel ${channel.channel}` : "")).part);
     });
 
 if (config.flags.showChatMessages)
     client.on('chat', (channel, userstate, message, self) => {
         if (config.flags.showSelf || !self)
-            console.log(`> ${userstate['display-name'].chat}` + (!config.flags.singleChannelMode ? `@${channel.channel}` : "") + `: ${message}`);
+            console.log((config.flags.showTimestamp ? dateformat.now().format(config.timestampFormat) : "") + `> ${userstate['display-name'].chat}` + (!config.flags.singleChannelMode ? `@${channel.channel}` : "") + `: ${message}`);
     });
 
 if (config.flags.singleChannelMode && config.flags.clearConsole)
     client.on('clearchat', () => process.stdout.write('\x1Bc'));
 
 if (config.flags.showHost)
-    client.on('hosted', (channel, username, viewerCount, autohost) => console.log(`> ${username.cyan} started hosting ` + (!config.flags.singleChannelMode ? channel.channel : "your channel") + ` with ${viewerCount} Viewers!` + (autohost ? " (autohost)" : "")));
+    client.on('hosted', (channel, username, viewerCount, autohost) => console.log((config.flags.showTimestamp ? dateformat.now().format(config.timestampFormat) : "") + `> ${username.cyan} started hosting ` + (!config.flags.singleChannelMode ? channel.channel : "your channel") + ` with ${viewerCount} Viewers!` + (autohost ? " (autohost)" : "")));
 
 if (config.flags.showCheer)
-    client.on('cheer', (channel, userstate, message) => console.log("> " + (`${userstate['display-name']} cheered` + (!config.flags.singleChannelMode ? ` on ${channel.channel}` : "") + "!" + (config.flags.includeCheerMessage ? ` Message: ${message}` : ""))).money);
+    client.on('cheer', (channel, userstate, message) => console.log((config.flags.showTimestamp ? dateformat.now().format(config.timestampFormat) : "") + "> " + (`${userstate['display-name']} cheered` + (!config.flags.singleChannelMode ? ` on ${channel.channel}` : "") + "!" + (config.flags.includeCheerMessage ? ` Message: ${message}` : ""))).money);
 
 if (config.flags.showSubscribtion)
-    client.on('subscription', (channel, username, method, message, userstate) => console.log("> " + (`${username} subscribed` + (!config.flags.singleChannelMode ? ` on ${channel.channel}` : "") + "!" + (config.flags.includeSubscriptionMessage ? ` Message: ${message}` : ""))).money);
+    client.on('subscription', (channel, username, method, message, userstate) => console.log((config.flags.showTimestamp ? dateformat.now().format(config.timestampFormat) : "") + "> " + (`${username} subscribed` + (!config.flags.singleChannelMode ? ` on ${channel.channel}` : "") + "!" + (config.flags.includeSubscriptionMessage ? ` Message: ${message}` : ""))).money);
 
 if (config.flags.showResubscribtion)
-    client.on('resub', (channel, username, months, message, userstate, methods) => console.log("> " + (`${username} re-subscribed for ${months} months` + (!config.flags.singleChannelMode ? ` on ${channel.channel}` : "") + "!" + (config.flags.includeResubscriptionMessage ? ` Message: ${message}` : ""))).money);
+    client.on('resub', (channel, username, months, message, userstate, methods) => console.log((config.flags.showTimestamp ? dateformat.now().format(config.timestampFormat) : "") + "> " + (`${username} re-subscribed for ${months} months` + (!config.flags.singleChannelMode ? ` on ${channel.channel}` : "") + "!" + (config.flags.includeResubscriptionMessage ? ` Message: ${message}` : ""))).money);
 
 
 if (config.flags.debug) {
