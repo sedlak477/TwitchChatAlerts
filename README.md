@@ -23,6 +23,7 @@ Just add a `config.json` file in the root directory and set the following settin
   * `showSelf` - Also show your own actions (chat messages, join, leave, etc.)
   * `showHost` - Display a message if somebody started  hosting a channel
   * `showCheer` - Display a message if somebody cheered on a channel
+  * `showTimestamp` - Add a timestamp at every action
   * `includeCheerMessage` - Also output the included cheer message
   * `showSubscription` - Display a message if somebody subscribed to a channel
   * `includeSubscriptionMessage` - Also output the included subscription message
@@ -33,6 +34,7 @@ Just add a `config.json` file in the root directory and set the following settin
   * `clearConsole` - Also clear the console if the Twitch chat got cleared. (only in single channel mode)
   * `debug` - Enable additional debug log
   * `singleChannelMode` - Only join one channel and don't output channel name on actions
+* `timestampFormat` - Format of the timestamp. For more details check out [node-datetime](https://www.npmjs.com/package/node-datetime#formatformat-string)
 
 ### Template
 ```json
